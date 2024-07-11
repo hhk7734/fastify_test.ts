@@ -1,0 +1,23 @@
+{
+	"name": "koa_test.ts",
+	"version": "0.0.0",
+	"main": "dist/index.js",
+	"type": "commonjs",
+	"scripts": {
+		"build": "tsc",
+		"start": "node ./dist/index.js",
+		"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
+	},
+	"devDependencies": {
+		"@types/koa": "^2.15.0",
+		"@types/koa__router": "^12.0.4",
+		"@types/node": "^20.14.10",
+		"nodemon": "^3.1.4",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.3"
+	},
+	"dependencies": {
+		"@koa/router": "^12.0.1",
+		"koa": "^2.15.3"
+	}
+}
