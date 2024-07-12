@@ -1,11 +1,20 @@
 import Koa from "koa";
 import Router from "@koa/router";
 import dotenv from "dotenv";
-import { logger } from "@/pkg/logger";
+import { program } from "commander";
+import * as logger from "@/pkg/logger";
 import { loggerMiddleware } from "@/userinterface/restapi/middleware/logger";
 import { requestIDMiddleware } from "./userinterface/restapi/middleware/requestID";
 
 dotenv.config();
+
+logger.addOption(program);
+
+program.parse();
+
+const opts = program.opts();
+
+logger.setGlobalLoggerWith(opts);
 
 const app = new Koa();
 const router = new Router();
@@ -22,5 +31,5 @@ router.get("/", (ctx) => {
 app.use(router.routes());
 
 app.listen(3000, () => {
-	logger().info("start");
+	logger.logger().info("start");
 });
