@@ -1,8 +1,12 @@
 import Koa from "koa";
 import Router from "@koa/router";
+import { logger } from "@/pkg/logger";
+import { loggerMiddleware } from "@/userinterface/restapi/middleware/logger";
 
 const app = new Koa();
 const router = new Router();
+
+app.use(loggerMiddleware);
 
 router.get("/", (ctx) => {
 	ctx.body = {
@@ -13,5 +17,5 @@ router.get("/", (ctx) => {
 app.use(router.routes());
 
 app.listen(3000, () => {
-	console.log("start");
+	logger().info("start");
 });
