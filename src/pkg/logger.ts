@@ -19,7 +19,7 @@ export function logger() {
 	return _logger;
 }
 
-export function withFields(fields: object, callbacke: () => void) {
+export function withFields(fields: object, callbacke: () => Promise<void> | void) {
 	const store = asyncLocalStorage.getStore() ?? {};
 	asyncLocalStorage.run({ ...store, ...fields }, callbacke);
 }
