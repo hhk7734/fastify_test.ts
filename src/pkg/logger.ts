@@ -1,6 +1,6 @@
 import { AsyncLocalStorage } from "node:async_hooks";
 import pino, { type LoggerOptions } from "pino";
-import { Option, Command, type OptionValues } from "commander";
+import { Option, type Command, type OptionValues } from "commander";
 
 const LOG_LEVEL_KEY = "log_level";
 const LOG_FORMAT_KEY = "log_format";
@@ -14,7 +14,7 @@ const defaultOpts: LoggerOptions = {
 };
 
 const asyncLocalStorage = new AsyncLocalStorage<object>();
-let globalLogger = pino(defaultOpts);
+let globalLogger = pino.pino(defaultOpts);
 
 export function addOption(cmd: Command) {
 	cmd.addOption(
@@ -42,7 +42,7 @@ export function setGlobalLoggerWith(opts: OptionValues) {
 		options.transport = { target: "pino-pretty", options: { singleLine: true } };
 	}
 
-	globalLogger = pino(options);
+	globalLogger = pino.pino(options);
 }
 
 export function logger() {
