@@ -1,5 +1,5 @@
-import { logger, withFields } from "@/pkg/logger";
-import { Context, Next } from "koa";
+import { logger, withFields } from "@/pkg/logger.js";
+import type { Context, Next } from "koa";
 
 export async function loggerMiddleware(ctx: Context, next: Next) {
 	const start = Date.now();

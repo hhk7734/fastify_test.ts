@@ -1,5 +1,5 @@
-import { withFields } from "@/pkg/logger";
-import { Context, Next } from "koa";
+import { withFields } from "@/pkg/logger.js";
+import type { Context, Next } from "koa";
 import { v4 as uuid } from "uuid";
 
 export function requestIDMiddleware(ctx: Context, next: Next) {

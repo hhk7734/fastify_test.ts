@@ -1,6 +1,6 @@
 import { AsyncLocalStorage } from "node:async_hooks";
-import pino, { LoggerOptions } from "pino";
-import { Option, Command, OptionValues } from "commander";
+import pino, { type LoggerOptions } from "pino";
+import { Option, Command, type OptionValues } from "commander";
 
 const LOG_LEVEL_KEY = "log_level";
 const LOG_FORMAT_KEY = "log_format";
