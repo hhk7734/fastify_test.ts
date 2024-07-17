@@ -1,6 +1,6 @@
 import { logger, withFields } from "@/pkg/logger.js";
 import type { Context, Next } from "koa";
-import { StatusCodes } from "http-status-codes";
+import { StatusCodes, ReasonPhrases } from "http-status-codes";
 
 export async function loggerMiddleware(ctx: Context, next: Next) {
 	const start = Date.now();
@@ -12,7 +12,7 @@ export async function loggerMiddleware(ctx: Context, next: Next) {
 	} catch (err) {
 		error = err;
 		ctx.response.status = StatusCodes.INTERNAL_SERVER_ERROR;
-		ctx.response.body = "";
+		ctx.response.body = ReasonPhrases.INTERNAL_SERVER_ERROR;
 	}
 
 	const latency = (Date.now() - start) / 1000;
