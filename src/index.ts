@@ -1,12 +1,10 @@
+import "dotenv/config";
 import Koa from "koa";
 import Router from "@koa/router";
-import dotenv from "dotenv";
 import { program } from "commander";
 import * as logger from "@/pkg/logger.js";
 import { loggerMiddleware } from "@/userinterface/restapi/middleware/logger.js";
 import { requestIDMiddleware } from "@/userinterface/restapi/middleware/requestID.js";
-
-dotenv.config();
 
 logger.addOption(program);
 
